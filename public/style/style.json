@@ -11,7 +11,7 @@
         "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/{z}/{x}/{y}.jpg"
       ],
       "tileSize": 256,
-      "attribution": "<a href=\"https://www.gsi.go.jp/\" target=\"_blank\" rel=\"noopener noreferrer\">© GSI Japan</a>"
+      "attribution": "<a href=\"https://maps.gsi.go.jp/development/ichiran.html\" target=\"_blank\" rel=\"noopener noreferrer\">地理院タイル</a>"
     }
   },
   "layers": [

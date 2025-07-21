@@ -11,7 +11,7 @@ const map = new maplibregl.Map({
   zoom: 4,
   hash: true,
   attributionControl: {
-    customAttribution: '<a href="https://www.data.jma.go.jp/developer/gpv_sample.html" target="_blank">出典：気象庁「全球数値予報モデルGPV (GSM全球域・日本域)」を加工して作成</a>',
+    customAttribution: '<a href="https://www.jmbsc.or.jp/jp/online/c-onlineGsample.html" target="_blank">出典：気象庁「日本近海海流予報格子点資料」（サンプルデータ）を加工して作成</a>',
   }
 });
 
