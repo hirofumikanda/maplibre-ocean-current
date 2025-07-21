@@ -1,0 +1,24 @@
+{
+  "version": 8,
+  "name": "GSI Seamlessphoto with Geolonia Basic",
+  "metadata": {},
+  "sources": {
+    "gsi-seamlessphoto": {
+      "type": "raster",
+      "minzoom": 2,
+      "maxzoom": 18,
+      "tiles": [
+        "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/{z}/{x}/{y}.jpg"
+      ],
+      "tileSize": 256,
+      "attribution": "<a href=\"https://www.gsi.go.jp/\" target=\"_blank\" rel=\"noopener noreferrer\">© GSI Japan</a>"
+    }
+  },
+  "layers": [
+    {
+      "id": "gsi",
+      "type": "raster",
+      "source": "gsi-seamlessphoto"
+    }
+  ]
+}
