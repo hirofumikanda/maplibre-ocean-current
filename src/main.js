@@ -11,7 +11,7 @@ const map = new maplibregl.Map({
   zoom: 1,
   hash: true,
   attributionControl: {
-    customAttribution: '<a href="https://ocean.weather.gov/Current_fcasts.php" target="_blank">出典：NOAA/NWS</a>',
+    customAttribution: '<a href="https://polar.ncep.noaa.gov/global/" target="_blank">NOAA Global RTOFS</a>',
   }
 });
 
