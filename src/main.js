@@ -7,32 +7,32 @@ import * as WeatherLayers from 'weatherlayers-gl';
 const map = new maplibregl.Map({
   container: 'map',
   style: './style/style.json',
-  center: [136.51, 37.88],
-  zoom: 4,
+  center: [137, 36.9],
+  zoom: 1,
   hash: true,
   attributionControl: {
-    customAttribution: '<a href="https://www.jmbsc.or.jp/jp/online/c-onlineGsample.html" target="_blank">出典：気象庁「日本近海海流予報格子点資料」（サンプルデータ）を加工して作成</a>',
+    customAttribution: '<a href="https://ocean.weather.gov/Current_fcasts.php" target="_blank">出典：NOAA/NWS</a>',
   }
 });
 
 map.on('load', async () => {
   map.addControl(new maplibregl.NavigationControl(), 'top-left');
 
-  const image = await WeatherLayers.loadTextureData('./img/ocean.png');
+  const globalImage = await WeatherLayers.loadTextureData('./img/global.png');
 
   const deckOverlay = new MapboxOverlay({
     interleaved: true,
     layers: [
       new WeatherLayers.ParticleLayer({
         id: 'particle',
-        numParticles: 5000,
+        numParticles: 10000,
         maxAge: 30,
         speedFactor: 500,
-        width: 2.0,
+        width: 3.0,
         opacity: 0.05,
-        image: image,
-        bounds: [120, 20, 160, 50],
-        imageUnscale: [-1.4, 1.8],
+        image: globalImage,
+        bounds: [-179.875, -89.875000, 179.875, 89.875000],
+        imageUnscale: [-0.9, 1.1],
       }),
     ]
   });
