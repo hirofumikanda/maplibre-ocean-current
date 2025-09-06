@@ -112,9 +112,26 @@ async function updateParticleLayer(imagePath) {
     imageUnscale = [-0.9, 1.1]; // 20250901のデフォルト
   }
   
+  // 画面サイズに応じてパーティクル数を調整
+  let numParticles;
+  const screenWidth = window.innerWidth;
+  const screenHeight = window.innerHeight;
+  const screenArea = screenWidth * screenHeight;
+  
+  if (screenWidth <= 480 || screenArea < 500000) {
+    // スマホサイズまたは小画面: 少ないパーティクル
+    numParticles = 2000;
+  } else if (screenWidth <= 768 || screenArea < 1000000) {
+    // タブレットサイズ: 中程度のパーティクル
+    numParticles = 5000;
+  } else {
+    // デスクトップサイズ: 多いパーティクル
+    numParticles = 10000;
+  }
+  
   const particleLayer = new WeatherLayers.ParticleLayer({
     id: 'particle',
-    numParticles: 5000,
+    numParticles: numParticles,
     maxAge: 30,
     speedFactor: 500,
     width: 3.0,
