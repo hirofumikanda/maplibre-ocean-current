@@ -58,8 +58,28 @@ window.addEventListener('DOMContentLoaded', () => {
   radio2Container.appendChild(radio2);
   radio2Container.appendChild(label2);
 
+  // 2024/9/1 ラジオボタン
+  const radio3Container = document.createElement('div');
+  radio3Container.style.display = 'flex';
+  radio3Container.style.alignItems = 'center';
+  
+  const radio3 = document.createElement('input');
+  radio3.type = 'radio';
+  radio3.name = 'dateSelect';
+  radio3.id = 'date20240901';
+  radio3.value = '20240901';
+
+  const label3 = document.createElement('label');
+  label3.htmlFor = 'date20240901';
+  label3.textContent = '2024/9/1';
+  label3.style.marginLeft = '6px';
+
+  radio3Container.appendChild(radio3);
+  radio3Container.appendChild(label3);
+
   uiDiv.appendChild(radio1Container);
   uiDiv.appendChild(radio2Container);
+  uiDiv.appendChild(radio3Container);
   document.body.appendChild(uiDiv);
 });
 
@@ -82,12 +102,19 @@ let currentImagePath = './img/global_20250901.png';
 async function updateParticleLayer(imagePath) {
   const globalImage = await WeatherLayers.loadTextureData(imagePath);
   
-  // 20250301データの場合は異なるimageUnscaleを使用
-  const imageUnscale = imagePath.includes('20250301') ? [-1.3, 1.2] : [-0.9, 1.1];
+  // 各データに応じて異なるimageUnscaleを使用
+  let imageUnscale;
+  if (imagePath.includes('20250301')) {
+    imageUnscale = [-1.3, 1.2];
+  } else if (imagePath.includes('20240901')) {
+    imageUnscale = [-1.2, 1.2];
+  } else {
+    imageUnscale = [-0.9, 1.1]; // 20250901のデフォルト
+  }
   
   const particleLayer = new WeatherLayers.ParticleLayer({
     id: 'particle',
-    numParticles: 10000,
+    numParticles: 5000,
     maxAge: 30,
     speedFactor: 500,
     width: 3.0,
@@ -121,6 +148,8 @@ map.on('load', async () => {
           currentImagePath = './img/global_20250901.png';
         } else if (e.target.value === '20250301') {
           currentImagePath = './img/global_20250301.png';
+        } else if (e.target.value === '20240901') {
+          currentImagePath = './img/global_20240901.png';
         }
         await updateParticleLayer(currentImagePath);
       }
